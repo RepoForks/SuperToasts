@@ -85,18 +85,14 @@ public class SuperActivityToast extends SuperToast {
      *
      * @param context An Activity Context
      */
-    public SuperActivityToast(@NonNull Context context) {
-        super(context);
+    public SuperActivityToast(@NonNull Activity activity) {
+        super(activity);
 
-        if (!(context instanceof Activity)) {
-            throw new IllegalArgumentException("SuperActivityToast Context must be an Activity.");
-        }
-
-        this.mContext = context;
+        this.mContext = activity;
         this.mStyle = this.getStyle(); // Style is created in the super(context) call
 
         // Set the default ViewGroup as the Activity's content
-        this.mViewGroup = (ViewGroup) ((Activity) context).findViewById(android.R.id.content);
+        this.mViewGroup = (ViewGroup) activity.findViewById(android.R.id.content);
     }
 
     /**
@@ -105,18 +101,14 @@ public class SuperActivityToast extends SuperToast {
      * @param context An Activity Context
      * @param style The desired Style             
      */
-    public SuperActivityToast(@NonNull Context context, @NonNull Style style) {
-        super(context, style);
+    public SuperActivityToast(@NonNull Activity activity, @NonNull Style style) {
+        super(activity, style);
 
-        if (!(context instanceof Activity)) {
-            throw new IllegalArgumentException("SuperActivityToast Context must be an Activity.");
-        }
-
-        this.mContext = context;
+        this.mContext = activity;
         this.mStyle = style;
 
         // Set the default ViewGroup as the Activity's content
-        this.mViewGroup = (ViewGroup) ((Activity) context).findViewById(android.R.id.content);
+        this.mViewGroup = (ViewGroup) activity.findViewById(android.R.id.content);
     }
 
     /**
@@ -125,18 +117,14 @@ public class SuperActivityToast extends SuperToast {
      * @param context An Activity Context
      * @param type The desired SuperActivityToast type             
      */
-    public SuperActivityToast(@NonNull Context context, @Style.Type int type) {
-        super(context, type);
+    public SuperActivityToast(@NonNull Activity activity, @Style.Type int type) {
+        super(activity, type);
 
-        if (!(context instanceof Activity)) {
-            throw new IllegalArgumentException("SuperActivityToast Context must be an Activity.");
-        }
-
-        this.mContext = context;
+        this.mContext = activity;
         this.mStyle = this.getStyle(); // Style is created in the super(context) call 
 
         // Set the default ViewGroup as the Activity's content
-        this.mViewGroup = (ViewGroup) ((Activity) context).findViewById(android.R.id.content);
+        this.mViewGroup = (ViewGroup) activity.findViewById(android.R.id.content);
     }
 
     /**
@@ -146,18 +134,14 @@ public class SuperActivityToast extends SuperToast {
      * @param style The desired Style             
      * @param type The desired SuperActivityToast type             
      */
-    public SuperActivityToast(@NonNull Context context, @NonNull Style style, @Style.Type int type) {
-        super(context, style, type);
+    public SuperActivityToast(@NonNull Activity activity, @NonNull Style style, @Style.Type int type) {
+        super(activity, style, type);
 
-        if (!(context instanceof Activity)) {
-            throw new IllegalArgumentException("SuperActivityToast Context must be an Activity.");
-        }
-
-        this.mContext = context;
+        this.mContext = activity;
         this.mStyle = this.getStyle(); // Style is created in the super(context) call 
 
         // Set the default ViewGroup as the Activity's content
-        this.mViewGroup = (ViewGroup) ((Activity) context).findViewById(android.R.id.content);
+        this.mViewGroup = (ViewGroup) activity.findViewById(android.R.id.content);
     }
 
     /**
@@ -168,22 +152,18 @@ public class SuperActivityToast extends SuperToast {
      * @param type The desired SuperActivityToast type    
      * @param viewGroupId The id of the ViewGroup to attach the SuperActivityToast to            
      */
-    public SuperActivityToast(@NonNull Context context, @NonNull Style style,
+    public SuperActivityToast(@NonNull Activity activity, @NonNull Style style,
                               @Style.Type int type, @IdRes int viewGroupId) {
-        super(context, style, type, viewGroupId);
+        super(activity, style, type, viewGroupId);
 
-        if (!(context instanceof Activity)) {
-            throw new IllegalArgumentException("SuperActivityToast Context must be an Activity.");
-        }
-
-        this.mContext = context;
+        this.mContext = activity;
         this.mStyle = this.getStyle(); // Style is created in the super(context) call 
 
         // Try to find the ViewGroup id in the layout
-        this.mViewGroup = (ViewGroup) ((Activity) context).findViewById(viewGroupId);
+        this.mViewGroup = (ViewGroup) activity.findViewById(viewGroupId);
         if (this.mViewGroup == null) {
             Log.e(getClass().getName(), "Could not find a ViewGroup with id " + String.valueOf(viewGroupId));
-            this.mViewGroup = (ViewGroup) ((Activity) context).findViewById(android.R.id.content);
+            this.mViewGroup = (ViewGroup) activity.findViewById(android.R.id.content);
         }
     }
 
